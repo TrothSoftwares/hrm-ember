@@ -1,0 +1,32 @@
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  empno: DS.attr('string'),
+  firstname: DS.attr('string'),
+  middlename:DS.attr('string'),
+  lastname: DS.attr('string'),
+  gender: DS.attr('string'),
+  dob: DS.attr('date'),
+  passportno: DS.attr('string'),
+  pidate: DS.attr('date'),
+  pedate: DS.attr('date'),
+  iqamano: DS.attr('string'),
+  iqidate: DS.attr('date'),
+  iqedate: DS.attr('date'),
+  insuranceno: DS.attr('string'),
+  iidate: DS.attr('date'),
+  iedate: DS.attr('date'),
+  visano: DS.attr('string'),
+  vidate: DS.attr('date'),
+  vedate: DS.attr('date'),
+  marstatus: DS.attr('string'),
+  religion: DS.attr('string'),
+  nationality: DS.attr('string'),
+  civstatus: DS.attr('string'),
+  designation: DS.attr('string'),
+  department: DS.attr('string'),
+  speciali: DS.attr('string'),
+  exp: DS.attr('string'),
+  email: DS.attr('string'),
+  image: DS.attr('string')
+});

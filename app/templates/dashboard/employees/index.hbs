@@ -1,0 +1,33 @@
+from employees index hbs
+<div class="ui two column stackable center aligned grid segment">
+       <div class="column">
+         <div class="ui button">A</div>
+       </div>
+       <div class="ui vertical divider">or</div>
+       <div class="column">
+         <div class="teal ui button">B</div>
+       </div>
+     </div>
+
+
+
+
+
+
+
+<div class="ui middle aligned divided list">
+{{#each model as |employee|}}
+<div class="item">
+  <div class="right floated content">
+    {{#link-to "dashboard.employees.employee" employee }}
+    <div class="ui button">View</div>
+    {{/link-to}}
+  </div>
+  <img class="ui avatar image" src="/images/lena.png">
+  <div class="content">
+    {{employee.firstname}}
+  </div>
+</div>
+{{/each}}
+
+</div>

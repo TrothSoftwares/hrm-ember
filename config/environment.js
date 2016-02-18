@@ -5,26 +5,66 @@ module.exports = function(environment) {
     modulePrefix: 'hrm-ember',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    // locationType: 'auto',
+    locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
+
+    // TODO: SELF * SHOULD BE SAFE PROOFED: about the connect src and cors configs.
+    contentSecurityPolicy: {
+      'default-src': "'self' *",
+      'script-src': "'self' *",
+      'connect-src': "'self' *",
+      'font-src': "'self'  data: http://fonts.gstatic.com * ",
+      'media-src': "'self' *",
+      'style-src': "'self' 'unsafe-inline' *",
+      'img-src' : "'self'"
+    },
+    'ember-cli-notifications': {
+      icons: 'bootstrap'
+    },
     EmberENV: {
       FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+
       }
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+
     }
   };
 
+
+
+  ENV['simple-auth-devise'] = {
+    tokenAttributeName: 'token',
+    identificationAttributeName: 'email',
+    serverTokenEndpoint:  ENV.APP.host  + '/users/sign_in',
+    authorizer: 'devise',
+    crossOriginWhitelist: ['*'],
+  };
+
+
+
+
+
+
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'login',
+    routeAfterAuthentication: 'dashboard',
+    routeIfAlreadyAuthenticated: 'dashboard'
+  };
+
+
+
+
+
+
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.host =  'http://localhost:3000';
+    ENV.APP.LOG_RESOLVER = false;
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_TRANSITIONS = false;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
@@ -40,7 +80,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.host = 'http://hrm-rails.herokuapp.com';
   }
 
   return ENV;

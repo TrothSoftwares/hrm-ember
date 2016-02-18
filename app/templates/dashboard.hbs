@@ -1,0 +1,94 @@
+
+
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="#" class="header item">
+        Inspire
+      </a>
+      {{link-to 'Dashboard' 'dashboard' class="item"}}
+      <div class="ui simple dropdown item right ">
+        {{userEmail}} <i class="dropdown icon"></i>
+        <div class="menu">
+          <a href="#"  class="item" {{action "logout"}}>Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui main text container">
+    <div class="ui grid">
+
+
+    <div class="three wide column">
+
+    <div class="ui vertical menu">
+      <div class="item">
+        <div class="ui input"><input type="text" placeholder="Search..."></div>
+      </div>
+
+
+
+      {{#ui-dropdown class="item" }}
+        Employee
+        <i class="dropdown icon"></i>
+        <div class="menu">
+
+
+          {{#link-to 'dashboard.employees.index' class="item"}}
+          <i class="edit icon"></i>   Employee Home
+          {{/link-to}}
+
+          {{#link-to 'dashboard.employees.new' class="item"}}
+          <i class="edit icon"></i>   New Employee
+          {{/link-to}}
+
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i> Employee Education
+          </div>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i> Employee Contracts
+          </div>
+          <div class="item" data-id="{{action}}">
+             <i class="edit icon"></i>Employee Payroll
+          </div>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i>Employee Leave
+          </div>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i>Leave Calendar
+          </div>
+        </div>
+      {{/ui-dropdown}}
+
+      {{#ui-dropdown class="item" }}
+        Documents
+        <i class="dropdown icon"></i>
+        <div class="menu">
+
+          <a class="item" data-id="{{action}}">
+          <i class="edit icon"></i>   Iqama
+          </a>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i> Passport
+          </div>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i> Visa
+          </div>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i> Insurance
+          </div>
+          <div class="item" data-id="{{action}}">
+            <i class="edit icon"></i> Upload
+          </div>
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  </div>
+   <div class="twelve wide column ">
+
+
+    {{outlet}}
+  </div>
+  </div>
+
+  </div>
