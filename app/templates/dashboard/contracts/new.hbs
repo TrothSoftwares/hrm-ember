@@ -1,0 +1,80 @@
+<div class="column">
+
+  <div class="ui form">
+    <div class="fields">
+      <div class="four wide field">
+        <label>Employee</label>
+
+        <select onchange={{action "updateEmployee" value="target.value"}} class="ui selection dropdown">
+          <option> Please Select </option>
+          {{#each employees as |emp|}}
+          <option class="item {{equals}} " value={{emp.id}} >{{emp.firstname}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="four wide field">
+        <div class="ui teal buttons">
+          <div class="ui button" {{action "createContract"}}>Save</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Status</label>
+        {{#ui-dropdown class="ui selection dropdown" onChange=(action 'updateStatus')}}
+<div class=" default text">Please Select</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each statuses as |status|}}
+          <div class="item selected" data-id="{{status}}">
+            {{status}}
+          </div>
+          {{/each}}
+        </div>
+        {{/ui-dropdown}}
+      </div>
+
+    </div>
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Contract Start</label>
+        {{pikaday-input value=cstart placeholder="Degree Year" }}
+      </div>
+      <div class="four wide field">
+        <label>Contract End</label>
+        {{pikaday-input value=cend placeholder="Degree Year" }}
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Probation Start</label>
+        {{pikaday-input value=pstart placeholder="Degree Year" }}
+      </div>
+      <div class="four wide field">
+        <label>Probation End</label>
+        {{pikaday-input value=pend placeholder="Degree Year" }}
+      </div>
+    </div>
+
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Iqama Name</label>
+        {{input type="text" value=nameiqama placeholder="Iqama Name."}}
+      </div>
+      <div class="four wide field">
+        <label>Proffesion</label>
+        {{input type="text" value=proiqama placeholder="Profession"}}
+      </div>
+    </div>
+
+    <div class="fields">
+
+
+
+    </div>
+  </div>
+</div>

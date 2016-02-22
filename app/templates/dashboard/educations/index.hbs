@@ -1,0 +1,24 @@
+<h2 class="ui dividing header">Education</h2>
+{{#link-to "dashboard.educations.new"  }}
+<div class="ui button">New</div>
+{{/link-to}}
+
+<div class="ui middle aligned divided list">
+  {{#each model as |education|}}
+  <div class="item">
+    <div class="right floated content">
+      {{#link-to "dashboard.educations.education" education }}
+      <div class="ui button">View</div>
+      {{/link-to}}
+    </div>
+    <div class="right floated content">
+      <div class="ui button" >Delete</div>
+    </div>
+    <img class="ui avatar image" src="/images/lena.png">
+    <div class="content">
+      {{education.employee.firstname}}
+    </div>
+  </div>
+  {{/each}}
+
+</div>

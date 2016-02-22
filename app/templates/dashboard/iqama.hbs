@@ -1,0 +1,32 @@
+<h2 class="ui dividing header">Iqama Details</h2>
+<div class="ui middle aligned divided list">
+  <table class="ui basic table">
+  <thead>
+    <tr><th>S.No</th>
+    <th>Employee No.</th>
+    <th>First Name</th>
+    <th>Iqama No</th>
+    <th>Iqama Issue</th>
+    <th>Iqama Expiry</th>
+    <th>Actions</th>
+  </tr></thead>
+  <tbody>
+{{#each model as |employee|}}
+<tr>
+  <td>{{employee.id}}</td>
+  <td>{{employee.empno}}</td>
+  <td>{{employee.firstname}}</td>
+  <td>{{employee.iqamano}}</td>
+  <td>{{moment-format employee.iqidate }}</td>
+  <td> {{moment-format employee.iqedate }} ({{moment-from-now employee.iqedate }})</td>
+  <td>
+  {{#link-to "dashboard.employees.employee" employee }}
+  <div class="ui button">Edit</div>
+  {{/link-to}}</td>
+</tr>
+{{/each}}
+  </tbody>
+</table>
+
+
+</div>

@@ -1,0 +1,32 @@
+<h2 class="ui dividing header">Passport Details</h2>
+<div class="ui middle aligned divided list">
+  <table class="ui basic table">
+  <thead>
+    <tr><th>S.No</th>
+    <th>Employee No.</th>
+    <th>First Name</th>
+    <th>Passport No</th>
+    <th>Passport Issue</th>
+    <th>Passport Expiry</th>
+    <th>Actions</th>
+  </tr></thead>
+  <tbody>
+{{#each model as |employee|}}
+<tr>
+  <td>{{employee.id}}</td>
+  <td>{{employee.empno}}</td>
+  <td>{{employee.firstname}}</td>
+  <td>{{employee.passportno}}</td>
+  <td>{{moment-format employee.pidate }}</td>
+  <td> {{moment-format employee.pedate }} ({{moment-from-now employee.pedate }})</td>
+  <td>
+  {{#link-to "dashboard.employees.employee" employee }}
+  <div class="ui button">Edit</div>
+  {{/link-to}}</td>
+</tr>
+{{/each}}
+  </tbody>
+</table>
+
+
+</div>

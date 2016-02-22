@@ -28,5 +28,6 @@ export default DS.Model.extend({
   speciali: DS.attr('string'),
   exp: DS.attr('string'),
   email: DS.attr('string'),
-  image: DS.attr('string')
+  image: DS.attr('string'),
+  // educations: DS.hasMany('education'),
 });

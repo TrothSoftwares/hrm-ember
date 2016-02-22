@@ -1,189 +1,216 @@
+
 <div class="column">
 
-<div class="ui button" {{action "updateEmployee"}}>Update</div>
-<div class="ui divider"></div>
+  <div class="ui form">
+    <div class="fields">
+      <div class="eight wide field">
+        <label>Employee Number</label>
+        {{input type="text" value=employee.empno placeholder="Employee No."}}
+      </div>
 
-<div class="ui labeled input">
-      <a class="ui label">Employee No.</a>
-      {{input type="text" value=employee.empno placeholder="Employee No."}}
-</div>
+      <div class="four wide field">
+          {{async-button  action="updateEmployee" default="Save"  fulfilled="Saved" pending="Saving.." rejected="Rejected! Try Again" class="ui button teal"}}
+      </div>
+    </div>
 
-<div class="ui left  labeled input">
-        <a class="ui label">First Name</a>
+    <div class="fields">
+      <div class="four wide field">
+        <label>First name</label>
         {{input type="text" value=employee.firstname placeholder="First Name."}}
-</div>
-
-<div class="ui divider"></div>
-
-<div class="ui labeled input">
-        <a class="ui label">Middle Name</a>
+      </div>
+      <div class="four wide field">
+        <label>Middle name</label>
         {{input type="text" value=employee.middlename placeholder="Middle Name."}}
-</div>
-
-<div class="ui labeled input">
-        <a class="ui label">Last Name</a>
+      </div>
+      <div class="four wide field">
+        <label>Last name</label>
         {{input type="text" value=employee.lastname placeholder="Last Name."}}
-</div>
+      </div>
+    </div>
 
+    <div class="fields">
 
-<div class="ui divider"></div>
-
-
-
-
-{{#ui-dropdown class="selection left labeled" onChange=(action 'updateGender')}}
-<a class="ui label">Gender</a>
-
-
-
-{{#if employee.gender}}
+      <div class="four wide field">
+        <label>Gender</label>
+        {{#ui-dropdown class="ui selection dropdown" onChange=(action 'updateGender')}}
+        {{#if employee.gender}}
 <div class="text">{{employee.gender}}</div>
 {{else}}
-<div class=" defaulttext">Select your gender</div>
+<div class=" default text">Please Select</div>
 {{/if}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each genders as |gender|}}
+          <div class="item selected" data-id="{{gender}}">
+            {{gender}}
+          </div>
+          {{/each}}
+        </div>
+        {{/ui-dropdown}}
+      </div>
+
+      <div class="four wide field">
+        <label>D.O.B</label>
+        {{pikaday-input value=employee.dob placeholder="Date of Birth" }}
+      </div>
+
+    </div>
 
 
-<i class="dropdown icon"></i>
-<div class="menu">
- {{#each genders as |gender|}}
-   <div class="item selected" data-id="{{gender}}">
-     {{gender}}
-   </div>
- {{/each}}
- </div>
-{{/ui-dropdown}}
-
-<div class="ui labeled input">
-        <a class="ui label">Passport Issue</a>
-        {{pikaday-input value=startsAt placeholder="Passport Issue" }}
-</div>
-<div class="ui divider"></div>
-<div class="ui labeled input">
-        <a class="ui label">Passport Expiry </a>
-        {{pikaday-input value=startsAt placeholder="Passport Expiry" }}
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Iqama No.</a>
-        <input type="text" placeholder="Iqama Number">
-</div>
-<div class="ui divider"></div>
-
-<div class="ui labeled input">
-        <a class="ui label">Iqama Issue </a>
-        {{pikaday-input value=startsAt placeholder="Iqama Issue" }}
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Iqama Expiry</a>
-        {{pikaday-input value=startsAt placeholder="Iqama Expiry" }}
-</div>
-<div class="ui divider"></div>
-<div class="ui labeled input">
-        <a class="ui label">Insurance No.</a>
-        <input type="text" placeholder="Insurance Number">
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Insurance Issue </a>
-        {{pikaday-input value=startsAt placeholder="Insurance Issue" }}
-</div>
-<div class="ui divider"></div>
-<div class="ui labeled input">
-        <a class="ui label">Insurance Expiry</a>
-        {{pikaday-input value=startsAt placeholder="Insurance Expiry" }}
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Visa No.</a>
-        <input type="text" placeholder="Visa Number">
-</div>
-
-<div class="ui divider"></div>
-
-<div class="ui labeled input">
-        <a class="ui label">Visa Issue </a>
-        {{pikaday-input value=startsAt placeholder="Visa Issue" }}
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Visa Expiry</a>
-        {{pikaday-input value=startsAt placeholder="Visa Expiry" }}
-</div>
-<div class="ui divider"></div>
-
-<a class="ui label">Maritial Status</a>
-{{#ui-dropdown class="selection left labeled" }}
-
-<div class="default text">Maritial Status</div>
-<i class="dropdown icon"></i>
-<div class="menu">
-  <div class="item" data>
-    Single
-  </div>
-  <div class="item" data>
-    Married
-  </div>
-</div>
-{{/ui-dropdown}}
-
-<a class="ui label">Religion</a>
-{{#ui-dropdown class="selection left labeled" }}
-<div class="default text">Religion</div>
-<i class="dropdown icon"></i>
-<div class="menu">
-  <div class="item" data>
-    Single
-  </div>
-  <div class="item" data>
-    Married
-  </div>
-</div>
-{{/ui-dropdown}}
+    <div class="fields">
+      <div class="four wide field">
+        <label>Passport Number</label>
+        {{input type="text" placeholder="Passport Number" value=employee.passportno}}
+      </div>
+      <div class="four wide field">
+        <label>Passport Issue</label>
+        {{pikaday-input value=employee.pidate placeholder="Passport Issue" }}
+      </div>
+      <div class="four wide field">
+        <label>Passport Expiry</label>
+        {{pikaday-input value=employee.pedate placeholder="Passport Expiry" }}
+      </div>
+    </div>
 
 
-<div class="ui divider"></div>
+    <div class="fields">
+      <div class="four wide field">
+        <label>Iqama Number</label>
+        {{input type="text" placeholder="Iqama Number" value=employee.iqamano}}
+      </div>
+      <div class="four wide field">
+        <label>Iqama Issue</label>
+        {{pikaday-input value=employee.iqidate placeholder="Iqama Issue" }}
+      </div>
+      <div class="four wide field">
+        <label>Iqama Expiry</label>
+        {{pikaday-input value=employee.iqedate placeholder="Iqama Expiry" }}
+      </div>
+    </div>
 
-<a class="ui label">Gender</a>
-{{#ui-dropdown class="selection left labeled" }}
-<div class="default text">Gender</div>
-<i class="dropdown icon"></i>
-<div class="menu">
-  <div class="item" data>
-    Single
-  </div>
-  <div class="item" data>
-    Married
-  </div>
-</div>
-{{/ui-dropdown}}
+    <div class="fields">
+      <div class="four wide field">
+        <label>Insurance  Number</label>
+        {{input type="text" placeholder="Insurance Number" value=employee.insuranceno}}
+      </div>
+      <div class="four wide field">
+        <label>Insurance Issue</label>
+        {{pikaday-input value=employee.iidate placeholder="Insurance Issue" }}
+      </div>
+      <div class="four wide field">
+        <label>Insurance Expiry</label>
+        {{pikaday-input value=employee.iedate placeholder="Insurance Expiry" }}
+      </div>
+    </div>
 
-<div class="ui labeled input">
-        <a class="ui label">Civil Status.</a>
-        <input type="text" placeholder="Civil Status">
-</div>
-<div class="ui divider"></div>
 
-<div class="ui labeled input">
-        <a class="ui label">Designation.</a>
-        <input type="text" placeholder="Designation">
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Department.</a>
-        <input type="text" placeholder="Department">
-</div>
-<div class="ui divider"></div>
 
-<div class="ui labeled input">
-        <a class="ui label">Specialization.</a>
-        <input type="text" placeholder="Specialization">
-</div>
-<div class="ui labeled input">
-        <a class="ui label">Experience.</a>
-        <input type="text" placeholder="Experience">
-</div>
-<div class="ui divider"></div>
+    <div class="fields">
+      <div class="four wide field">
+        <label>Visa  Number</label>
+        {{input type="text" placeholder="Visa Number" value=employee.visano}}
+      </div>
+      <div class="four wide field">
+        <label>Visa Issue</label>
+        {{pikaday-input value=employee.vidate placeholder="Visa Issue"}}
+      </div>
+      <div class="four wide field">
+        <label>Visa Expiry</label>
+        {{pikaday-input value=employee.vedate placeholder="Visa Expiry" }}
+      </div>
+    </div>
 
-<div class="ui labeled input">
-        <a class="ui label">E-mail.</a>
-        <input type="text" placeholder="E-mail">
-</div>
+    <div class="fields">
+      <div class="four wide field">
+        <label>Maritial Status</label>
+        {{#ui-dropdown class="selection left labeled" onChange=(action 'updateMarStatus')}}
+        {{#if employee.marstatus}}
+        <div class="text">{{employee.marstatus}}</div>
+        {{else}}
+        <div class=" default text">Please Select</div>
+        {{/if}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data>
+            Single
+          </div>
+          <div class="item" data>
+            Married
+          </div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+      <div class="four wide field">
+        <label>Religion</label>
+        {{#ui-dropdown class="selection left labeled"  onChange=(action 'updateReligion')}}
+        {{#if employee.religion}}
+        <div class="text">{{employee.religion}}</div>
+        {{else}}
+        <div class=" default text">Please Select</div>
+        {{/if}}        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each religions as |religion|}}
+          <div class="item selected" data-id="{{marstatus}}">
+            {{religion}}
+          </div>
+          {{/each}}
+        </div>
+        {{/ui-dropdown}}
+      </div>
+      <div class="four wide field">
+        <label>Nationality</label>
+        {{#ui-dropdown class="ui dropdown selection " onChange=(action 'updateNationality')}}
+        {{#if employee.nationality}}
+        <div class="text">{{employee.nationality}}</div>
+        {{else}}
+        <div class=" defaulttext">Please Select</div>
+        {{/if}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each nationalities as |nationality|}}
+          <div class="item selected" data-id="{{nationality}}">
+            {{nationality}}
+          </div>
+          {{/each}}
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
 
+
+
+      <div class="fields">
+        <div class="four wide field">
+          <label>Civil Status  Number</label>
+          {{input type="text" placeholder="Civil Status" value=employee.civstatus }}
+        </div>
+        <div class="four wide field">
+          <label>Designation</label>
+          {{input type="text" placeholder="Designation" value=employee.designation}}
+        </div>
+        <div class="four wide field">
+          <label>Department</label>
+          {{input type="text" placeholder="Department" value=employee.department}}
+        </div>
+      </div>
+
+
+      <div class="fields">
+        <div class="four wide field">
+          <label>Specialization</label>
+          {{ input type="text" placeholder="Specialization" value=employee.speciali}}
+        </div>
+        <div class="four wide field">
+          <label>Experience</label>
+          {{input type="text" placeholder="Experience" value=employee.exp}}
+        </div>
+        <div class="four wide field">
+          <label>E-mail</label>
+          {{input type="text" placeholder="E-mail" value=employee.email}}
+        </div>
+      </div>
+
+  </div> <!-- end of Fields -->
 
 
 

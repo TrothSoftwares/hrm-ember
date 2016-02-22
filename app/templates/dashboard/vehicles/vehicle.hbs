@@ -1,0 +1,52 @@
+<div class="column">
+
+  <div class="ui form">
+<div class="fields">
+    <div class="four wide field">
+
+      {{async-button  action="updateVehicle" default="Save"  fulfilled="Saved" pending="Saving.." rejected="Rejected! Try Again" class="ui button teal"}}
+    </div>
+    </div>
+
+
+    <div class="fields">
+
+      <div class="four wide field">
+        <label>Reg No</label>
+        {{input type="text" value=vehicle.regno placeholder="Registration No."}}
+      </div>
+
+      <div class="four wide field">
+        <label>Model</label>
+        {{input type="text" value=vehicle.modelname placeholder="Model"}}
+      </div>
+      <div class="four wide field">
+        <label>Driver</label>
+        {{input type="text" value=vehicle.dname placeholder="Driver"}}
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Isthimara Expiry</label>
+        {{pikaday-input value=vehicle.isthiedate placeholder="Isthimara Expiry" }}
+      </div>
+      <div class="four wide field">
+        <label>Next Service</label>
+        {{pikaday-input value=vehicle.nextsdate placeholder="Next Service" }}
+      </div>
+
+    </div>
+
+    <div class="fields">
+
+
+    </div>
+  </div>
+</div>

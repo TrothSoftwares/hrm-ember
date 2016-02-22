@@ -16,7 +16,7 @@ module.exports = function(environment) {
       'font-src': "'self'  data: http://fonts.gstatic.com * ",
       'media-src': "'self' *",
       'style-src': "'self' 'unsafe-inline' *",
-      'img-src' : "'self'"
+      'img-src' : "'self' data: http://fonts.gstatic.com *"
     },
     'ember-cli-notifications': {
       icons: 'bootstrap'
@@ -64,7 +64,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_TRANSITIONS = false;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
   }
 
   if (environment === 'test') {

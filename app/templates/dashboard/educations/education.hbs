@@ -1,0 +1,88 @@
+<div class="column">
+
+  <div class="ui form">
+    <div class="fields">
+
+
+
+      <div class="four wide field">
+        <label>Employee</label>
+
+
+        <select onchange={{action "updateEmployee" value="target.value"}} class="ui selection dropdown">
+          {{#each employees as |emp|}}
+          <option class="item {{equals}} {{education.employee.firstname}} {{emp.firstname}}" value={{emp.id}} selected={{eq education.employee.id emp.id}}>{{emp.firstname}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="four wide field">
+        {{async-button  action="updateEducation" default="Save"  fulfilled="Saved" pending="Saving.."  rejected="Rejected! Try Again" class="ui button teal"}}
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Education Type</label>
+        {{#ui-dropdown class="ui selection dropdown" onChange=(action 'updateEdtype')}}
+        {{#if education.edtype}}
+        <div class="text">{{education.edtype}}</div>
+        {{else}}
+        <div class=" default text">Please Select</div>
+        {{/if}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each edtypes as |edtype|}}
+          <div class="item selected" data-id="{{edtype}}">
+            {{edtype}}
+          </div>
+          {{/each}}
+        </div>
+        {{/ui-dropdown}}
+      </div>
+
+      <div class="four wide field">
+        <label>Degree</label>
+        {{#ui-dropdown class="ui selection dropdown" onChange=(action 'updateDegree')}}
+        {{#if education.deg}}
+        <div class="text">{{education.deg}}</div>
+        {{else}}
+        <div class=" default text">Please Select</div>
+        {{/if}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each degs as |deg|}}
+          <div class="item selected" data-id="{{deg}}">
+            {{deg}}
+          </div>
+          {{/each}}
+        </div>
+        {{/ui-dropdown}}
+      </div>
+
+      <div class="four wide field">
+        <label>Degree Year</label>
+        {{pikaday-input value=education.degyear placeholder="Degree Year" }}
+      </div>
+
+    </div>
+
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Verified?</label>
+        {{ui-checkbox checked=education.verified}}
+      </div>
+
+      <div class="four wide field">
+        <label>Verified By</label>
+
+        <select onchange={{action "updateVerifiedBy" value="target.value"}} class="ui selection dropdown">
+          {{#each employees as |emp|}}
+          <option class="item" value={{emp.id}} selected={{eq education.verifiedby.id emp.id}}>{{emp.firstname}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+    </div>
+  </div>
+</div>

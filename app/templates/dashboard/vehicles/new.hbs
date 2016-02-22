@@ -1,0 +1,47 @@
+<div class="column">
+
+  <div class="ui form">
+<div class="fields">
+    <div class="four wide field">
+      <div class="ui teal buttons">
+        <div class="ui button" {{action "createVehicle"}}>Save</div>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="fields">
+
+      <div class="four wide field">
+        <label>Reg No</label>
+        {{input type="text" value=regno placeholder="Registration No."}}
+      </div>
+
+      <div class="four wide field">
+        <label>Model</label>
+        {{input type="text" value=modelname placeholder="Model"}}
+      </div>
+      <div class="four wide field">
+        <label>Driver</label>
+        {{input type="text" value=dname placeholder="Driver"}}
+      </div>
+    </div>
+
+    <div class="fields">
+      <div class="four wide field">
+        <label>Isthimara Expiry</label>
+        {{pikaday-input value=isthiedate placeholder="Isthimara Expiry" }}
+      </div>
+      <div class="four wide field">
+        <label>Next Service</label>
+        {{pikaday-input value=nextsdate placeholder="Next Service" }}
+      </div>
+
+    </div>
+
+    <div class="fields">
+
+
+    </div>
+  </div>
+</div>
